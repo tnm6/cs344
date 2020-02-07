@@ -1,0 +1,6 @@
+# Answers for Lab 1, Exercise 1.1
+## Nathan Meyer (tnm6)
+
+b. gps.py file
+  i. The GPS problem solver is implemented as a function.
+  ii. 
