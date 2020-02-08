@@ -2,5 +2,12 @@
 ## Nathan Meyer (tnm6)
 
 b. gps.py file
-  i. The GPS problem solver is implemented as a function.
-  ii. 
+  i.    The GPS problem solver is implemented as a function.
+  ii.   They are lists of strings.
+  iii.  Yes. gps() runs achieve_all(), which runs achieve() for each goal, and
+      achieve() runs apply_operator() for each operator. Within apply_operator(),
+      it calls achieve_all() for any pre-conditions, thus recursively calling the
+      sequence.
+
+d. Running monkeys.py
+  i.    
