@@ -5,9 +5,13 @@ b. gps.py file
   i.    The GPS problem solver is implemented as a function.
   ii.   They are lists of strings.
   iii.  Yes. gps() runs achieve_all(), which runs achieve() for each goal, and
-      achieve() runs apply_operator() for each operator. Within apply_operator(),
-      it calls achieve_all() for any pre-conditions, thus recursively calling the
-      sequence.
+      achieve() runs apply_operator() for each operator. Within
+      apply_operator() it calls achieve_all() for any pre-conditions, thus
+      recursively calling the sequence.
 
 d. Running monkeys.py
-  i.    
+  i.    It models the monkey and banana problem, in which a ball with bananas
+      is suspended on the ceiling, out of reach of the monkey. The monkey must
+      use a chair and a stick in order to reach them. The program models seems
+      to model this accurately, requiring each step for the monkey to perform.
+  ii.   
