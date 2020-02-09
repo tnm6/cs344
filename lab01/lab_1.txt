@@ -10,8 +10,21 @@ b. gps.py file
       recursively calling the sequence.
 
 d. Running monkeys.py
-  i.    It models the monkey and banana problem, in which a ball with bananas
-      is suspended on the ceiling, out of reach of the monkey. The monkey must
-      use a chair and a stick in order to reach them. The program models seems
-      to model this accurately, requiring each step for the monkey to perform.
-  ii.   
+  i.    It models the monkey and banana problem, in bananas are suspended from
+      the ceiling just out of reach of the monkey. In order to reach them, the
+      monkey must use the chair (and in this case, drop a ball) to climb up in
+      order to grab the bananas. The code seems to faithfully implement this
+      puzzle, with the addition of having to drop a ball that the monkey
+      initially has in his hand.
+  ii.   Based on a list of states given (preconditions, added, and deleted
+      conditions), the GPS determines how to progress through the given list in
+      order to reach its intended state, 'not hungry.' If we think through the
+      states in reverse order, we see that in order to reach 'not hungry,' the
+      action 'eat bananas' must be taken, which, given the preconditions, can
+      only be performed if the monkey 'has bananas,' which is achieved through
+      the action 'grasp bananas,' which itself can only be achieved if the
+      monkey is both 'at bananas' and 'empty handed' and so on. So the GPS
+      performs the tasks necessary to work through each state and its problems,
+      until it finally can perform 'eat bananas' which results in the goal 'not
+      hungry.'
+  iii.  
