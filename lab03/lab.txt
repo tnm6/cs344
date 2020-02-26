@@ -1,0 +1,31 @@
+# Answers for Lab 3
+## Nathan Meyer (tnm6)
+
+### Exercise 3.1 (sudoku.py)
+a.  Depth-first search does not solve any of the unsolved sudoku puzzles. It
+  makes sense that it would fail since it would almost invariably time-out as
+  it attempts to search through the entire tree of possible boards, or it would
+  most likely get "stuck" choosing an incorrect board with no way to backtrack.
+    AC3 could solve the first, easy puzzle quickly but not the others. Since it
+  depends upon constraints, these likely perform well when the board is nearly
+  finished. However, in the harder examples with fewer numbers filled in, the
+  constraints alone cannot entirely narrow down the boards to one solution.
+    Backtracking solved the easy puzzle eventually (43 seconds on my Mac), but
+  would take an increasingly long time to solve the others. It could probably
+  find answers to them, since it will not get stuck like depth-first, but would
+  likely take an unreasonable amount of time to do so (exponentially so with
+  the harder examples).
+    Min-conflicts failed on the easy puzzle and took a long time to do so (96
+  seconds). This is likely do to how, unlike an n-queens problem, there are
+  considerably more variables to change the values for in order to reduce
+  conflicts. The algorithm is likely to run out of allowed steps before finding
+  a solution.
+b.  Minimum-remaining-values and forward-checking together should produce the
+  best result since forward-checking assists MRV in gathering its heuristic.
+  This holds true. While forward-checking alone makes backtracking twice as
+  fast as AC3 on the easy puzzle, forward-checking and MRV are 66% faster than
+  that. More than that, forward-checking makes backtracking able to solve *all*
+  of the puzzles, with MRV speeding up the solution further.
+
+### Exercise 3.2 (queens.py)
+a.  
