@@ -28,4 +28,36 @@ b.  Minimum-remaining-values and forward-checking together should produce the
   of the puzzles, with MRV speeding up the solution further.
 
 ### Exercise 3.2 (queens.py)
-a.  
+a.  AC-3 fails for any n. This is perhaps due to the fact that, unlike in
+  Sudoku, the valid values for each variable can be reintroduced. While the
+  value for each place on the Sudoku board has only one value once each
+  inconsistency is addressed, with n-queens, once-inconsistent values can
+  become consistent, which might cause problems with AC-3. 
+    n can technically be infinitely large for backtracking, but the time
+  necessary increases at an alarming rate (16 takes 0.421 seconds while 24
+  takes 12 seconds) because of the branching factor.
+    n can get exceedingly large for min-conflicts. This makes sense since, in
+  research on n-queens, it was found that min-conflicts can solve even a
+  million-queens problem in an average of 50 steps.
+b.  Minimum-remaining-values significantly speeds up backtracking, and forward-
+  checking provides moderate speedup as well. Combined, they produce the
+  fastest results. The significant speedup with MRV makes sense since the
+  ability for backtracking to prune out large sets of invalid moves would lead
+  to a significantly faster solving time with n-queens.
+
+### Exercise 3.3 (compare and contrast)
+a.  By the very nature of the name, constraint satisfaction problems can define
+  constraints in order to prune possible solutions, while traditional search
+  cannot. Traditional search requires a start state, a set of actions, and a
+  goal state to test reach through those actions, while CSPs are built around 
+  variables, domains (values for those variables), and constraints on tuples of
+  those variables that must be satisfied. The only discernment made in
+  traditional problems are the prerequisites needed to take an action, while
+  CSPs can rule out entire subtrees based on constraints. This means that CSPs
+  can require smaller search spaces than traditional search.
+b.  The heuristics in traditional search usually involve the cost of actions
+  taken while CSPs' heuristics can involve a greater variety depending on the
+  algorithm. Because of the detail of constraints and domains, CSPs can define
+  heuristics based upon both or either one, resulting in more complex
+  heuristics than simply accounting for the cost of an action taken.
+  
