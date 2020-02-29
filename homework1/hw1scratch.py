@@ -33,6 +33,7 @@ class TSP(Problem):
         # Gather cities from state at indeces given by action
         swap1 = state[action[0]]
         swap2 = state[action[1]]
+        
         # Swap those in new_state
         new_state[action[0]] = swap2
         new_state[action[1]] = swap1
@@ -41,7 +42,7 @@ class TSP(Problem):
 
     def value(self, state):
         """Computes and returns total distance travelled
-        as negative value, to function properly with algorithms"""
+        as negative value, in order to find the minimum"""
         value = 0
         for i in range(len(state)-1):
             city1 = state[i]
@@ -55,32 +56,48 @@ from search import hill_climbing, simulated_annealing, exp_schedule
 from random import randrange, shuffle
 import time
 
-if __name__ == '__main__':
-    cities = 10
-    max_distance = 20
+cities = 10
+max_distance = 20
 
-    # Generate initial sequence of cities
-    initial = []
-    for city in range(1, cities):
-        initial.append(city)
-    shuffle(initial)
-    # Make the initial state a loop by adding first city to last
-    initial.append(initial[0])
+# Generate initial sequence of cities
+initial = []
+for city in range(1, cities):
+    initial.append(city)
+shuffle(initial)
+# Make the initial state a loop by adding first city to end
+initial.append(initial[0])
 
-    # Generate random distances between each city
-    distances = {}
+# Generate random distances between each city
+distances = {}
 
-    for city1 in initial:
-        for city2 in initial:
-            if city1 != city2:  # frozensets to ensure no duplicates
-                distances[frozenset((city1, city2))] = randrange(1, max_distance)
+for city1 in initial:
+    for city2 in initial:
+        if city1 != city2:  # frozensets to ensure no duplicates
+            distances[frozenset((city1, city2))] = randrange(1, max_distance)
 
-    problem = TSP(initial, distances)
+# Generate and print initial TSP problem
+problem = TSP(initial, distances)
+print('Initial:\n\t' + str(problem.initial)
+        + "\tvalue: " + str(-problem.value(initial))
+    )
 
-    time1 = time.time()
-    hill_solution = hill_climbing(problem)
-    time2 = time.time()
-    print('Hill-climbing solution       x: ' + str(hill_solution)
+# Solve the problem with hill-climbing
+time1 = time.time()
+hill_solution = hill_climbing(problem)
+time2 = time.time()
+print('Hill-climbing solution:\n\t' + str(hill_solution)
         + '\tvalue: ' + str(-problem.value(hill_solution))
         + "\t\ttime: %0.3f seconds" % (time2 - time1)
-        )
+    )
+
+# Solve the problem with simulated annealing
+time1 = time.time()
+annealing_solution = simulated_annealing(
+    problem,
+    exp_schedule(k=20, lam=0.05, limit=1000)
+)
+time2 = time.time()
+print('Simulated annealing solution:\n\t' + str(annealing_solution)
+        + '\tvalue: ' + str(-problem.value(annealing_solution))
+        + "\t\ttime: %0.3f seconds" % (time2 - time1)
+    )
