@@ -1,0 +1,11 @@
+# Answers for Lab 2
+## CS-344, Prof. Vander Linden, Calvin University
+
+### Exercise 2.1
+a. Hill-climbing and simulated-annealing both solve the problem, producing the
+  expected result (absolute peak of 15 for a maximum of 30).
+b. Hill-climbing solves the problem more quickly.
+c. No, it does not. In a problem as simplistic as this (with a clear linear
+  progression towards the goal state), each algorithm has the same way of
+  solving the problem regardless of what the starting value for x is.
+d. 
