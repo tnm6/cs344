@@ -55,33 +55,32 @@ from search import hill_climbing, simulated_annealing, exp_schedule
 from random import randrange, shuffle
 import time
 
-cities = 10
-max_distance = 20
+if __name__ == '__main__':
+    cities = 10
+    max_distance = 20
 
-# Generate initial sequence of cities
-initial = []
-for city in range(1, cities):
-    initial.append(city)
-shuffle(initial)
-# Make the initial state a loop by adding first city to last
-initial.append(initial[0])
+    # Generate initial sequence of cities
+    initial = []
+    for city in range(1, cities):
+        initial.append(city)
+    shuffle(initial)
+    # Make the initial state a loop by adding first city to last
+    initial.append(initial[0])
 
-# Generate random distances between each city
-distances = {}
+    # Generate random distances between each city
+    distances = {}
 
-for city1 in initial:
-    for city2 in initial:
-        if city1 != city2:  # frozensets to ensure no duplicates
-            distances[frozenset((city1, city2))] = randrange(1, max_distance)
+    for city1 in initial:
+        for city2 in initial:
+            if city1 != city2:  # frozensets to ensure no duplicates
+                distances[frozenset((city1, city2))] = randrange(1, max_distance)
 
-problem = TSP(initial, distances)
+    problem = TSP(initial, distances)
 
-time1 = time.time()
-hill_solution = hill_climbing(problem)
-time2 = time.time(
-print('Hill-climbing solution       x: ' + str(hill_solution)
-    + '\tvalue: ' + str(-problem.value(hill_solution))
-    + "\t\ttime: %0.3f seconds" % (time2 - time1)
-    )
-
-
+    time1 = time.time()
+    hill_solution = hill_climbing(problem)
+    time2 = time.time()
+    print('Hill-climbing solution       x: ' + str(hill_solution)
+        + '\tvalue: ' + str(-problem.value(hill_solution))
+        + "\t\ttime: %0.3f seconds" % (time2 - time1)
+        )
