@@ -1,103 +1,54 @@
-from search import Problem
+from csp import parse_neighbors
 
-class TSP(Problem):
-    """
-    State: sequence of visited cities
-    Actions: swap two cities in sequence of index i and j
-    Result: new sequence of sequences after action
-    Value: distance between two cities i and j
-    """
+def CourseScheduling():
+    """Return an example of constraint satisfaction for course scheduling"""
+    Faculty = 'VanderLinden Norman Adams Plantinga'.split()
+    Rooms = 'NH253 SB382'.split()
+    Times = 'MWF900 MWF1200 TTH1030 TTH1200'.split()
+    variables = 'CS108 CS112 CS212 CS214 CS232 CS262'.split()
 
-    def __init__(self, initial, distances):
-        self.initial = initial
-        self.distances = distances
+    # Create all possible domain values for each variable (course)
+    # arrangement is always tuples of prof, time, and room
+    domains = {}
+    for course in variables:
+        domains[course] = []
+        for prof in Faculty:
+            for time in Times:
+                for room in Rooms:
+                    domains[course].append((prof, time, room))
 
-    def actions(self, state):
-        """From a given state, return possible actions (swaps).
-        Actions include swapping any cities in the sequence between the
-        first and the last.
-        """
-        actions = []
+    # Make sure each course is a neighbor
+    neighbors = parse_neighbors("""CS108: CS112 CS212 CS214 CS232 CS262
+                CS112: CS212 CS214 CS232 CS262
+                CS212: CS214 CS232 CS262
+                CS214: CS232 CS262
+                CS232: CS262""", variables)
 
-        for i in range(1, len(state)-1):
-            for j in range(1, len(state)-1):
-                if i != j:
-                    actions.append((i, j))
+    def course_constraints(A, a, B, b):
+        """Defines constraints for scheduling with variable courses A and B
+        and their respective values a and b
+        Returns true only if none of the constraints are violated"""
 
-        return actions
-    
-    def result(self, state, action):
-        """With given action, swap the cities and return resulting state"""
-        new_state = state[:]
-
-        # Gather cities from state at indeces given by action
-        swap1 = state[action[0]]
-        swap2 = state[action[1]]
-        
-        # Swap those in new_state
-        new_state[action[0]] = swap2
-        new_state[action[1]] = swap1
-
-        return new_state
-
-    def value(self, state):
-        """Computes and returns total distance travelled
-        as negative value, in order to find the minimum"""
-        value = 0
-        for i in range(len(state)-1):
-            city1 = state[i]
-            city2 = state[i+1]
-            # Frozenset to evaluate distance regardless of order
-            value -= self.distances[frozenset((city1, city2))]
-
-        return value
-
-from search import hill_climbing, simulated_annealing, exp_schedule
-from random import randrange, shuffle
-import time
-
-cities = 10
-max_distance = 20
-
-# Generate initial sequence of cities
-initial = []
-for city in range(1, cities):
-    initial.append(city)
-shuffle(initial)
-# Make the initial state a loop by adding first city to end
-initial.append(initial[0])
-
-# Generate random distances between each city
-distances = {}
-
-for city1 in initial:
-    for city2 in initial:
-        if city1 != city2:  # frozensets to ensure no duplicates
-            distances[frozenset((city1, city2))] = randrange(1, max_distance)
-
-# Generate and print initial TSP problem
-problem = TSP(initial, distances)
-print('Initial:\n\t' + str(problem.initial)
-        + "\tvalue: " + str(-problem.value(initial))
-    )
-
-# Solve the problem with hill-climbing
-time1 = time.time()
-hill_solution = hill_climbing(problem)
-time2 = time.time()
-print('Hill-climbing solution:\n\t' + str(hill_solution)
-        + '\tvalue: ' + str(-problem.value(hill_solution))
-        + "\t\ttime: %0.3f seconds" % (time2 - time1)
-    )
-
-# Solve the problem with simulated annealing
-time1 = time.time()
-annealing_solution = simulated_annealing(
-    problem,
-    exp_schedule(k=20, lam=0.05, limit=1000)
-)
-time2 = time.time()
-print('Simulated annealing solution:\n\t' + str(annealing_solution)
-        + '\tvalue: ' + str(-problem.value(annealing_solution))
-        + "\t\ttime: %0.3f seconds" % (time2 - time1)
-    )
+        # Is the course the same? (cannot be taught more than once)
+        if A == B:
+            return False
+        # Are the assignments correct?
+        if (A == 'CS108' and a[0] != 'VanderLinden') or \
+           (B == 'CS108' and b[0] != 'VanderLinden'):
+            return False
+        elif (A == 'CS112' and a[0] != 'Norman') or \
+             (B == 'CS112' and b[0] != 'Norman'):
+            return False
+        elif (A == 'CS212' and a[0] != 'Plantinga') or \
+             (A == 'CS212' and b[0] != 'Plantinga'):
+            return False
+        elif (A == 'CS214' and a[0] != 'Adams') or \
+             (B == 'CS214' and b[0] != 'Adams'):
+            return False
+        elif (A == 'CS232' and a[0] != 'Norman') or \
+             (B == 'CS232' and b[0] != 'Norman'):
+            return False
+        elif (A == 'CS262' and a[0] != 'VanderLinden') or \
+             (B == 'CS262' and b[0] != 'VanderLinden'):
+            return False
+        # are 
