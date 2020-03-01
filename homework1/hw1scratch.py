@@ -1,4 +1,4 @@
-from csp import parse_neighbors
+from csp import CSP, parse_neighbors
 
 def CourseScheduling():
     """Return an example of constraint satisfaction for course scheduling"""
@@ -29,9 +29,6 @@ def CourseScheduling():
         and their respective values a and b
         Returns true only if none of the constraints are violated"""
 
-        # Is the course the same? (cannot be taught more than once)
-        if A == B:
-            return False
         # Are the assignments correct?
         if (A == 'CS108' and a[0] != 'VanderLinden') or \
            (B == 'CS108' and b[0] != 'VanderLinden'):
@@ -51,4 +48,12 @@ def CourseScheduling():
         elif (A == 'CS262' and a[0] != 'VanderLinden') or \
              (B == 'CS262' and b[0] != 'VanderLinden'):
             return False
-        # are 
+        # Is the teacher assigned twice to one time?
+        elif a[0] == b[0] and a[1] == a[2]:
+            return False
+        # Is the room double-booked?
+        elif a[1] == b[1] and a[2] == b[2]:
+            return False
+        # Else, constraints are satisfied
+        return True
+    return CSP(variables, domains, neighbors, course_constraints)
