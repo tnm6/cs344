@@ -60,6 +60,9 @@ scheduler = CourseScheduler()
 
 time1 = time.time()
 result = backtracking_search(scheduler)
+# result = depth_first_graph_search(scheduler)
+# result = AC3(scheduler)
+# result = min_conflicts(scheduler)
 time2 = time.time()
 
 if scheduler.goal_test(scheduler.infer_assignment()):
