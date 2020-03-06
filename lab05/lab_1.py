@@ -4,6 +4,10 @@ It's taken from the AIMA Python code.
 
 @author: kvlinden
 @version Jan 2, 2013
+
+Added enumeration_ask() calls for Exercise 5.1, Lab 5
+@author Nathan Meyer (tnm6)
+@date 6mar2020
 '''
 
 from probability import BayesNet, enumeration_ask, elimination_ask, gibbs_ask
@@ -27,3 +31,19 @@ print(elimination_ask('Burglary', dict(JohnCalls=T, MaryCalls=T), burglary).show
 # gibbs_ask() is an approximation algorithm helps Bayesian Networks scale up.
 print(gibbs_ask('Burglary', dict(JohnCalls=T, MaryCalls=T), burglary).show_approx())
 # See the explanation of the algorithms in AIMA Section 14.4.
+
+# Compute P(Alarm | Burglary ^ ¬Earthquake).
+print('\nP(Alarm | Burglary ^ ¬Earthquake):')
+print(enumeration_ask('Alarm', dict(Burglary=T, Earthquake=F), burglary).show_approx())
+
+# Compute P(JohnCalls | Burglary ^ ¬Earthquake).
+print('P(JohnCalls | Burglary ^ ¬Earthquake):')
+print(enumeration_ask('JohnCalls', dict(Burglary=T, Earthquake=F), burglary).show_approx())
+
+# Compute P(Burglary | Alarm).
+print('P(Burglary | Alarm):')
+print(enumeration_ask('Burglary', dict(Alarm=T), burglary).show_approx())
+
+# Compute P(JohnCalls | Burglary ^ ¬Earthquake).
+print('P(Burglary | JohnCalls ^ MaryCalls):')
+print(enumeration_ask('Burglary', dict(JohnCalls=T, MaryCalls=T), burglary).show_approx())
