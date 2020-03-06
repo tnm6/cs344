@@ -28,7 +28,7 @@ print(PC.show_approx())
 # Compute P(Cavity|Catch=T)
 '''
 Hand calculated P(Cavity|Catch=T)
-P(Cavity|Catch) = P(Cavity, Catch) / P(Catch)
+P(Cavity|Catch) = P(Cavity, Catch) / P(Catch) (Bayes' Rule)
 = (0.108 + 0.072) / (0.108 + 0.072 + 0.016 + 0.144)
 = 0.529
 So hand calculation is: False: 0.471, True: 0.529
