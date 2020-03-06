@@ -1,0 +1,42 @@
+# Lab 4
+## CS-344, Calvin University, Prof. Vander Linden
+## Nathan Meyer (tnm6)
+
+### Exercise 4.3
+a.  Drug Testing
+  i.    P(User)       = 0.089
+  ii.   P(Test|User)  = 0.99
+  iii.  P(¬Test|User) = 1 - 0.99 = 0.01
+  iv.   P(Test|¬User) = 1 - 0.98 = 0.02
+  v.    P(User|Test)  = P(User^Test) / P(Test)
+        First find P(User^Test):
+          P(Test|User) = P(User^Test) / P(User) =
+          0.99 = P(User^Test) / 0.089
+          P(User^Test) = 0.99 * 0.089 = 0.088
+        Then find P(Test) (based on Wikipedia formulation)
+          P(Test) = P(Test|User)*P(User) + P(Test|¬User)*P(¬User)
+                  = (0.99*0.089) + (0.02* (1-0.089))
+                  = 0.106
+        P(User|Test) = 0.088 / 0.106 = 0.830 = 83.0%
+
+b.  Breast cancer
+  P(Test|Cancer)  = 0.80
+  P(Test|¬Cancer) = 0.096
+  P(Cancer)       = 0.01
+
+  P(Cancer|Test)  = ?
+                  = P(Cancer^Test) / P(Test)
+
+  P(Cancer^Test)  = ?
+  P(Test|Cancer)  = P(Cancer^Test) / P(Cancer), so...
+  P(Cancer^Test)  = P(Test|Cancer) * P(Cancer) = 0.80 * 0.01 = 0.008
+
+  P(Test)         = ?
+                  = P(Test|Cancer)*P(Cancer) + P(Test|¬Cancer)*P(¬Cancer)
+                  = (0.80*0.01) + (0.096 * (1-0.01))
+                  = 0.103
+
+  P(Cancer|Test)  = P(Cancer^Test) / P(Test) = 0.008 / 0.103 = 0.078
+
+  From this, there is about a 7.8% chance that a patient has cancer given a
+  positive test result... which is even worse than Yudkowsky's claim.
