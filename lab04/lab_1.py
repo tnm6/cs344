@@ -5,6 +5,10 @@ It is based on the code from AIMA probability.py.
 
 @author: kvlinden
 @version Jan 1, 2013
+
+Added computations for Exercise 4.1 of Lab 4
+@author: Nathan Meyer (tnm6)
+@date 5mar2020
 '''
 
 from probability import JointProbDist, enumerate_joint_ask
