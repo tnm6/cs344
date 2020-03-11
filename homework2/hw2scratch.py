@@ -1,4 +1,8 @@
 def hash_corpus(corpus):
+    '''
+    Reads a given corpus (list of message lists) and returns a hash table for
+    the number of occurrences of each word
+    '''
     hashed = {}
 
     for message in corpus:
