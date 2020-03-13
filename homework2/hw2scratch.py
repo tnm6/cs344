@@ -25,15 +25,11 @@ def spam_prob(word, good, bad, ngood, nbad):
         b = bad[word]
     else:
         b = 0
-    
+
     if (g + b) >= 1:
-        return max(
-            0.01,
-            min(
-                0.99,
-                min(1.0, b / nbad) / (min(1.0, g / ngood) + min(1.0, b / nbad))
-            )
-        )
+        return max(0.01,
+                   min(0.99,
+                       min(1.0, b / nbad) / (min(1.0, g / ngood) + min(1.0, b / nbad))))
     else:
         return 0
 
@@ -49,18 +45,18 @@ def hash_prob_table(good, bad, ngood, nbad):
     return probs
 
 
-
-spam_corpus = [["I", "am", "spam", "spam", "I", "am"], ["I", "do", "not", "like", "that", "spamiam"]]
+spam_corpus = [["I", "am", "spam", "spam", "I", "am"],
+               ["I", "do", "not", "like", "that", "spamiam"]]
 ham_corpus = [["do", "i", "like", "green", "eggs", "and", "ham"], ["i", "do"]]
 
-bad = hash_corpus(spam_corpus)
-good = hash_corpus(ham_corpus)
-nbad = len(spam_corpus)
-ngood = len(spam_corpus)
+spam = hash_corpus(spam_corpus)
+ham = hash_corpus(ham_corpus)
+nspam = len(spam_corpus)
+nham = len(spam_corpus)
 
-print(bad)
-print(good)
+print("Spam hash table:\n\t" + str(spam))
+print("Ham hash table:\n\t" + str(ham))
 
-probabilities = hash_prob_table(good, bad, ngood, nbad)
+probabilities = hash_prob_table(ham, spam, nham, nspam)
 
-print(probabilities)
+print("Probability table:\n\t" + str(probabilities))
