@@ -16,7 +16,7 @@ def hash_corpus(corpus):
     return hashed
 
 
-def hash_word(word, good, bad):
+def spam_prob(word, good, bad, ngood, nbad):
     if word in good:
         g = 2 * good[word]
     else:
@@ -27,8 +27,6 @@ def hash_word(word, good, bad):
         b = 0
     
     if (g + b) >= 1:
-        ngood = len(good)
-        nbad = len(bad)
         return max(
             0.01,
             min(
@@ -40,28 +38,29 @@ def hash_word(word, good, bad):
         return 0
 
 
-def hash_probability(good, bad):
+def hash_prob_table(good, bad, ngood, nbad):
     probs = {}
-    
-    for word in good:
-        probs.update({word: hash_word(word, good, bad)})
-    for word in bad:
-        if word not in probs:
-            probs.update({word: hash_word(word, good, bad)})
+    probs.update(good)
+    probs.update(bad)
+
+    for word in probs:
+        probs[word] = spam_prob(word, good, bad, ngood, nbad)
 
     return probs
-            
 
-if __name__ == '__main__':
-    spam_corpus = [["I", "am", "spam", "spam", "I", "am"], ["I", "do", "not", "like", "that", "spamiam"]]
-    ham_corpus = [["do", "i", "like", "green", "eggs", "and", "ham"], ["i", "do"]]
 
-    spam = hash_corpus(spam_corpus)
-    ham = hash_corpus(ham_corpus)
 
-    print(spam)
-    print(ham)
+spam_corpus = [["I", "am", "spam", "spam", "I", "am"], ["I", "do", "not", "like", "that", "spamiam"]]
+ham_corpus = [["do", "i", "like", "green", "eggs", "and", "ham"], ["i", "do"]]
 
-    probabilities = hash_probability(ham, spam)
+bad = hash_corpus(spam_corpus)
+good = hash_corpus(ham_corpus)
+nbad = len(spam_corpus)
+ngood = len(spam_corpus)
 
-    print(probabilities)
+print(bad)
+print(good)
+
+probabilities = hash_prob_table(good, bad, ngood, nbad)
+
+print(probabilities)
