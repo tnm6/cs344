@@ -29,3 +29,5 @@ c.  Under what circumstances would it be useful to reorder/shuffle a
     Pandas DataFrame?
   It might be useful when pulling a smaller assortment of data out of a larger
 (and possibly sorted) dataset, such as when needing to visualize the data.
+  Also, randomizing the data could help avoid performance issues for certain
+algorithms analyzing the data.
