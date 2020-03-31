@@ -2,7 +2,7 @@ Exercise 7.1 for Lab 7 of CS-344
 Professor Keith Vander Linden, Calvin University
 Answers by Nathan Meyer (tnm6)
 
-a. Submit your solutions to exercises 1–2.
+a.  Submit your solutions to exercises 1–2.
 Exercise 1:
   cities['Big Saint City?'] = 
       cities['City name'].apply(lambda val: val.startswith('San')) &
@@ -15,3 +15,17 @@ the same result.
   Perhaps this is allowed because, in real world data, the presence of any
 any certain index is uncertain, so errors are not thrown when unpredictable
 data might lack the necessary information.
+
+b.  Why would one use Pandas rather than the standard data manipulation features
+    provided by NumPy?
+  While NumPy provides functionality for multi-dimensional arrays and important
+scientific computations, Panda's specialization in handling column-oriented
+data makes it especially useful for ML-friendly statistical data, where the
+data can often be presented in tables of rows/columns and in graphs. Likewise,
+features in pandas like apply() can be very powerful for necessary data
+manipulation in ML.
+
+c.  Under what circumstances would it be useful to reorder/shuffle a
+    Pandas DataFrame?
+  It might be useful when pulling a smaller assortment of data out of a larger
+(and possibly sorted) dataset, such as when needing to visualize the data.
