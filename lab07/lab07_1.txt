@@ -1,0 +1,17 @@
+Exercise 7.1 for Lab 7 of CS-344
+Professor Keith Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a. Submit your solutions to exercises 1–2.
+Exercise 1:
+  cities['Big Saint City?'] = 
+      cities['City name'].apply(lambda val: val.startswith('San')) &
+      cities['Area square miles'].apply(lambda val: val > 50)
+Exercise 2:
+  cities.reindex([0, 2, 4])
+  This command produces useful values for 0 and 2, but for 4, all values in
+each column are populated with 'NaN'. For all indeces greater than 2, there is
+the same result.
+  Perhaps this is allowed because, in real world data, the presence of any
+any certain index is uncertain, so errors are not thrown when unpredictable
+data might lack the necessary information.
