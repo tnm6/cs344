@@ -30,4 +30,9 @@ Task 2:
     Final RMSE (on training data): 176.09
   Not better than total_rooms with 10x faster learning rate, but still < 180.
 
-c.  
+c.  What are the hyper-parameters learned in these exercises and is there a
+    "standard" tuning algorithm for them? Explain your answer.
+  The hyper-parameters are the learning rate, the number of steps per period,
+and the batch size.
+  There is no reliable tuning algorithm, only vague rules of thumb. The
+effectiveness of altering the hyper-parameters is highly dependent on the data.
