@@ -11,4 +11,23 @@ contained within the data.
 numbers. Some numbers might be better treated as categories depending on the
 context (zipcodes, etc.).
 
-b.  
+b.  Submit solutions to tasks 1–2. Include your best hyper-parameter values and
+    the resulting RMSE, but not the training output.
+Task 1:
+    train_model(
+        learning_rate=0.0001,
+        steps=100,
+        batch_size=1
+    )
+    Final RMSE (on training data): 169.46
+Task 2:
+    train_model(
+        learning_rate=0.00004,
+        steps=500,
+        batch_size=5,
+        input_feature='population'
+    )
+    Final RMSE (on training data): 176.09
+  Not better than total_rooms with 10x faster learning rate, but still < 180.
+
+c.  
