@@ -1,0 +1,17 @@
+Exercise 8.1 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Submit solutions to tasks 1–5.
+Task 1:
+    The range of median income is odd: 0.5–15.0 for both sets. Is this in
+  hundreds of thousands? Or is it not a linear scale? And is 15.0 a cutoff?
+    The minimum value for rooms per person is 0.0 but the minimums for
+  total_rooms and population are 2.0 and 3.0 respectively. This could be due to
+  rounding a very small total_rooms divided by a larger population value, but
+  it seems odd in practice to have a 0.0 value for room_per_person. This is
+  probably due to a simple rounding approach for decimals lower than 0.1.
+    The median_house_value seems to be cut off at 500.0. Both sets have this
+  maximum despite a more granular range of values for mean, etc., although the
+  min values are also 15.0.
+Task 2:
