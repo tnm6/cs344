@@ -22,3 +22,34 @@ Task 2:
 Task 3:
     Uncommented the line which shuffles the california_housing_dataframe. This
   solves the issue of the data ordered by latitude/longitude.
+Task 4:
+    # 1. Create input functions.
+    training_input_fn = lambda: my_input_fn(
+        training_examples, training_targets['median_house_value'],
+        batch_size=batch_size
+    )
+    predict_training_input_fn = lambda: my_input_fn(
+        training_examples, training_targets['median_house_value'],
+        num_epochs=1, shuffle=False
+    )
+    predict_validation_input_fn = lambda: my_input_fn(
+        validation_examples, validation_targets['median_house_value'],
+        num_epochs=1, shuffle=False
+    )
+
+    # 2. Take a break and compute predictions.
+    training_predictions = linear_regressor.predict(
+        input_fn=predict_training_input_fn
+    )
+    validation_predictions = linear_regressor.predict(
+        input_fn=predict_validation_input_fn
+    )
+
+    training_predictions = np.array(
+        [item['predictions'][0] for item in training_predictions]
+    )
+    validation_predictions = np.array(
+        [item['predictions'][0] for item in validation_predictions]
+    )
+
+    
