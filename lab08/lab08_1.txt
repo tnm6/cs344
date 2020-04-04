@@ -56,3 +56,26 @@ Task 4:
     learning_rate=0.00009,
     steps=200,
     batch_size=1000
+Task 5:
+    california_housing_test_data = pd.read_csv("https://download.mlcc.google.com/mledu-datasets/california_housing_test.csv", sep=",")
+
+    test_examples = preprocess_features(california_housing_test_data)
+    test_targets = preprocess_targets(california_housing_test_data)
+
+    test_predict_fn = lambda: my_input_fn(
+        test_examples, test_targets['median_house_value'],
+        num_epochs = 1, shuffle=False
+    )
+
+    test_predictions = linear_regressor.predict(input_fn=test_predict_fn)
+    test_predictions = np.array(
+        [item['predictions'][0] for item in test_predictions]
+    )
+
+    test_rmse = math.sqrt(
+        metrics.mean_squared_error(test_predictions, test_targets)
+    )
+
+    print("Final RMSE: " + str(test_rmse))
+  Output:
+    Final RMSE: 159.807176006017
