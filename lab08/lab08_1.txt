@@ -56,6 +56,8 @@ Task 4:
     learning_rate=0.00009,
     steps=200,
     batch_size=1000
+  Output:
+    period 09 : 164.98 (final RMSE)
 Task 5:
     california_housing_test_data = pd.read_csv("https://download.mlcc.google.com/mledu-datasets/california_housing_test.csv", sep=",")
 
@@ -79,3 +81,14 @@ Task 5:
     print("Final RMSE: " + str(test_rmse))
   Output:
     Final RMSE: 159.807176006017
+
+b.  Give a one-paragraph summary of what you learned about using training,
+    validation, and testing datasets
+  Each dataset is used for a distinct process in the model. With training, this
+data is "complete" for the ML model to learn through linear regression. For
+validation, the predictions are made based on the training model and are
+compared to the actual results from the validation dataset for accuracy (RMSE).
+Finally, after tweaking based on those first two datasets, we confirm the
+performance of the model based upon the testing dataset. This way, the test set
+is not "worn out" by overuse and can be a distinct, third set to double-check
+the performance of the model.
