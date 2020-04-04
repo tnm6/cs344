@@ -52,4 +52,7 @@ Task 4:
         [item['predictions'][0] for item in validation_predictions]
     )
 
-    
+    # TWEAK THESE VALUES TO SEE HOW MUCH YOU CAN IMPROVE THE RMSE
+    learning_rate=0.00009,
+    steps=200,
+    batch_size=1000
