@@ -1,0 +1,13 @@
+Exercise 8.2 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  What does the Pearson correlation coefficient measure? Identify one example
+    value from the correlation table you compute and explain why it makes sense
+  It measures a correlation value from -1.0 to 1.0, 0.0 is no correlation and
+the two ends mean negative and positive correlations, respectively.
+  For example, total_rooms has a 0.9 (nearly perfect) positive correlation with
+number of households per block. This makes sense because it is logical to think
+that, on average, more houses in a block will amount to more rooms in that
+block. The .1 can account for exceptions, where certain houses might have more
+rooms than other houses.
