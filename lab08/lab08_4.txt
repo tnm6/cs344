@@ -32,4 +32,8 @@ is overprocessed with weights compounding on each other.
 d.  Try networks with one more and one less hidden layer, and wider or narrower
     layers. Do any of your alternatives do better than the suggested 
     architecture? Why or why not?
-  
+  The networks took too long on my machine to ascertain clear answers, but I
+suspect that neither fewer/more hidden layers nor making the layers wider or
+narrower would produce better results. This is because fewer/narrower layers
+might take too long to fit, and more/wider layers would worsen the overfitting
+issue.
