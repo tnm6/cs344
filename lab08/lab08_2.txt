@@ -11,3 +11,37 @@ number of households per block. This makes sense because it is logical to think
 that, on average, more houses in a block will amount to more rooms in that
 block. The .1 can account for exceptions, where certain houses might have more
 rooms than other houses.
+
+b.  Submit your solutions to tasks 1–2. Include the features you selected for
+    task 1 and the synthetic features you developed for task 2; include the
+    RMSE errors but not the training output. Did you beat the Google-provided
+    baselines?
+Task 1:
+  I tried adding total_rooms first but that skewed the results, which makes
+sense now given that it is strongly correlated with other features (strongly
+advised against in the exercise).
+    minimal_features = ["latitude", "median_income"]
+
+    train_model(
+        learning_rate=0.01,
+        steps=1000,
+        batch_size=100,
+        ...)
+
+    period 09: 92.61 (better than Google's solution)
+Task 2:
+    def filter_selection(source):
+      filtered_examples = pd.DataFrame()
+      filtered_examples["median_income"] = source["median_income"]
+      filtered_examples["distance_from_san_fran"] = source['latitude'].apply(
+          lambda x: 1.0 if abs(x - 38) <= 5 else 0.0
+      )
+      return filtered_examples
+
+    filtered_training_examples = filter_selection(training_examples)
+    filtered_validation_examples = filter_selection(validation_examples)
+  Run on same train_model() settings for Task 1, output is:
+    period 09 : 84.67 (better than Google's solution)
+
+  So in both cases, the performance is better than Google's baselines and
+significantly below the 180 goal in previous exercises.
