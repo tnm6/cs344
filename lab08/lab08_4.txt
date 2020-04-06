@@ -1,0 +1,35 @@
+Exercise 8.4 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  What good did the K-fold validation do in this exercise?
+  It provided more useful information than a validation set would, since the
+dataset is relatively small. Rather than being limited to a small set of data
+which could vary greatly depending on which "chunk" of data is being used, the
+K-fold validation split the data into K partitions, trained identical models
+on K-1 of them, and evaluated based on the other partition. After doing this
+for K folds, the mean of each evaluation is taken to produce a more dependable
+error value.
+
+b.  Chollet claims that it would be problematic to use data values with “wildly
+    different ranges”. Why is this?
+  A significant number of different ranges would make a model's learning more
+difficult, since it would have to account for trends or patterns in data which
+is not reliably on the same scale. This problem can be seen in heterogeneous
+data, where the data is not necessarily all on the same scale and numbers do
+not always mean the same thing for each column. The solution for this is to
+perform a feature-wise normalization.
+
+c.  Chollet also claims that smaller datasets “prefer” smaller networks. Do you
+    agree? Explain your answer.
+  As Chollet says in the exercise, overfitting is an issue with smaller sets of
+training data, so a smaller network is a way to avoid overfitting. This makes
+sense to me, since there are relatively fewer values, having fewer layers
+ensures a safer "ratio" of layers to data, where there are enough layers to
+handle the data, but not too many such that layers are redundant or the data
+is overprocessed with weights compounding on each other.
+
+d.  Try networks with one more and one less hidden layer, and wider or narrower
+    layers. Do any of your alternatives do better than the suggested 
+    architecture? Why or why not?
+  
