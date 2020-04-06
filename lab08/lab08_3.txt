@@ -1,0 +1,50 @@
+Exercise 8.3 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  They recommend FTRL for L1 optimization, but the code specifies the same
+    rate (learning_rate) for all runs. How is FTRL managing the learning rate?
+  The linear_regressor object is passed in my_optimizer as its optimizer
+argument, which itself was constructed with the learning_rate passed in as an
+argument. This must mean that, with each run, the optimizer that the
+linear_regressor has adjusts the learning rate (starting at what it is
+initially given) as the runs progress. So while the code in train_model() only
+uses learning_rate once, the optimizer adjusts it "behind the scenes" within
+the linear_regressor.
+
+b.  What good does the bucketing/binning do?
+  It can notably improve model training performance. In the case of this
+exercise, FTRL + bucketing produced a final RMSE of 87.90 vs. 146.97 using only
+FTRL.
+
+c.  Submit your solutions to tasks 1–2. Did you find their task 1 bucketing to
+    make sense? Identify one unique feature cross for task 2 and explain how it
+    could be useful. 
+Task 1:
+    bucketized_latitude = tf.feature_column.bucketized_column(
+      latitude, boundaries=get_quantine_based_boundaries(
+        training_examples["latitude"], 10))
+    bucketized_housing_median_age = tf.feature_column.bucketized_column(
+      housing_median_age, boundaries=get_quantile_based_boundaries(
+        training_examples["housing_median_age"], 6))
+    bucketized_median_income = tf.feature_column.bucketized_column(
+      median_income, boundaries=get_quantile_based_boundaries(
+        training_examples["median_income"], 10))
+    bucketized_rooms_per_person = tf.feature_column.bucketized_column(
+      rooms_per_person, boundaries=get_quantile_based_boundaries(
+        training_examples["rooms_per_person"], 5))
+
+    Final RMSE: 87.90
+  Their bucketing of arbitrary values made some sense, given that they chose
+the values so that the model would not be too large (presumably and relatively
+too many buckets for too few values?). Likewise, my chosen values performed
+well for probably the same reasons.
+
+Task 2:
+    long_x_lat = tf.feature_column.crossed_column(
+      [bucketized_latitude, bucketized_longitude], 1000)
+
+    Final RMSE: 78.96
+  One other feature cross could be population and median_income. This feature
+could build rough "classes" based on income and the amount of people who have
+that level of income.
