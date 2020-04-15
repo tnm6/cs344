@@ -1,0 +1,9 @@
+Exercise 9.1 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  How effective is the linear regression approach to the problem?
+  Largely ineffective. Training the model yields almost no curve in loss
+reduction of any sort, and the reduction that is there is gradual and
+inconsistent (spikes in higher error during a few periods).
+
