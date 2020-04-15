@@ -7,3 +7,7 @@ a.  How effective is the linear regression approach to the problem?
 reduction of any sort, and the reduction that is there is gradual and
 inconsistent (spikes in higher error during a few periods).
 
+b. Task 1: Compare and contrast L2 Loss vs LogLoss.
+  L2 Loss is the Mean Squared Error which all of the linear regression
+exercises have been based upon (more specifically, Root Mean Squared Error).
+EXPLAIN THIS FURTHER
