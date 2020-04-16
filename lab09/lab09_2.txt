@@ -1,0 +1,11 @@
+Exercise 9.2 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Why are we regularizing with respect to sparsity?
+  High sparsity often leads to vectors with many dimensions, so regularizing
+with respect to sparsity can help to "zero out" certain features, meaning they
+are essentially removed. This saves memory and can also reduce noise. This is
+particularly possible in L1 Regularization which encourages coefficients to be
+0 where possible.
+
