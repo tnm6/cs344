@@ -21,4 +21,9 @@ properly accounted for.
 
 c.  Task 2: Explain how effective logistic regression is compared with linear
     regression.
-  
+  Logistic Regression and LogLoss produced a more consistent curve in loss
+reduction, although the calculated LogLoss error is higher than the RMSE (0.53
+for LogLoss vs. 0.44 for RMSE). This might be more accurate to the "actual"
+loss. However, it's worth noting that the curve still had fluctuation, where
+loss increased around period 3 before going down again.
+
