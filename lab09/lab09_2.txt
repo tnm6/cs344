@@ -16,3 +16,8 @@ input noise as well. Since sparsity is the number of zero'd elements divided by
 the total number of elements, regularization will inherently increase sparsity
 as it pushes more and more values to 0.
 
+c.  Task 1: Here, just report the best log loss value / model size you can get
+    and what gamma value you used to get them.
+  LogLoss: 0.25
+  Model Size: 574
+  Gamma: 0.75
