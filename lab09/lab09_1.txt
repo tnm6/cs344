@@ -9,5 +9,16 @@ inconsistent (spikes in higher error during a few periods).
 
 b. Task 1: Compare and contrast L2 Loss vs LogLoss.
   L2 Loss is the Mean Squared Error which all of the linear regression
-exercises have been based upon (more specifically, Root Mean Squared Error).
-EXPLAIN THIS FURTHER
+exercises have been based upon, which are then printed out as the Root Mean
+Squared Error to be more understandable. This uses the fairly straightforward
+mean squared error metric on the predictions compared to the actual targets.
+  LogLoss is a more sophisticated approach where the target probability y is
+negated then multiplied by the log of the prediction y-pred, then subtracted
+from that is the complement (1 - y) * lg(1 - y-pred). The sum of these
+calculations is then used to calculate loss. This is a more effective approach
+when more granular changes in probability (e.g., 0.9 and 0.9999) need to be
+properly accounted for. 
+
+c.  Task 2: Explain how effective logistic regression is compared with linear
+    regression.
+  
