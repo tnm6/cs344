@@ -9,3 +9,10 @@ are essentially removed. This saves memory and can also reduce noise. This is
 particularly possible in L1 Regularization which encourages coefficients to be
 0 where possible.
 
+b.  How does L1 regularization increase sparsity?
+  As referred to in a., L1 Regularization encourages coefficients to be 0. This
+can lead to elimination of certain features which saves memory and can reduce
+input noise as well. Since sparsity is the number of zero'd elements divided by
+the total number of elements, regularization will inherently increase sparsity
+as it pushes more and more values to 0.
+
