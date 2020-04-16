@@ -27,3 +27,10 @@ for LogLoss vs. 0.44 for RMSE). This might be more accurate to the "actual"
 loss. However, it's worth noting that the curve still had fluctuation, where
 loss increased around period 3 before going down again.
 
+d.  Task 3: Here, just report the best values you can achieve for AUC/accuracy
+    and what hyperparameters you used to get them.
+  learning_rate=0.000002,
+  steps=15000,
+  batch_size=500
+
+  LogLoss: 0.47; AUC: 0.81; Accuracy: 0.77
