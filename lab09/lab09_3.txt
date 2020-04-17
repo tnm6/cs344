@@ -1,0 +1,14 @@
+Exercise 9.3 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Try Chollet’s “Further experiments”. Do any of the alternatives do better
+    than the suggested architecture? Why or why not?
+  None of the alternatives showed better results than the suggested
+architecture. While some changes produce higher accuracy/lower loss for the
+training data, none produced more accurate results for the test data. This is
+likely due to how changes to density and number of layers can lead to
+overfitting. Other changes, like relu to tanh for activation function, do not
+perform as well because relu is a better fit for binary classification. The
+same can be said for replacing binary cross-entropy with MSE, since the former
+is especially effective for this type of problem.
