@@ -1,0 +1,13 @@
+Exercise 10.3 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Task 1: What does the confusion matrix show for this example?
+  It shows which digits might be confused for other digits, one example being
+7s and 1s. By confused, this means that these particular digits might be prone
+to being classified incorrectly when mistakenly identified for its similar
+digit.
+
+b.  Task 2: How does the TensorFlow network architecture differ from
+    the Keras example given in class? Report any improvements you can make over
+    the baseline testset accuracy for this task.
