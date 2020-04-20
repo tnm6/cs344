@@ -1,4 +1,4 @@
-Exercise 10.1 of Lab 8
+Exercise 10.2 of Lab 8
 CS-344, Professor Vander Linden, Calvin University
 Answers by Nathan Meyer (tnm6)
 
