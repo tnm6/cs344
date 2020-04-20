@@ -1,0 +1,47 @@
+Exercise 10.1 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  What does AdaGrad do to boost performance?
+  It using gradient-based optimization to adapt the learning rate to the
+coefficients of each parameter; specifically, it alters the learning rates of
+common features' parameters gradually, but it alters those of less common
+features' parameters more drastically. Sparse data particularly benefits from
+this algorithm.
+
+b.  Tasks 1–3: Report your best hyperparameter settings and their resulting
+    performance.
+Task 1:
+  my_optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.01),
+  steps=4000,
+  batch_size=50,
+  hidden_units=[10, 10]
+  
+  Final RMSE (on training data):   67.30
+  Final RMSE (on validation data): 65.51
+Task 2:
+  Adagrad
+    my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.5),
+    steps=4000,
+    batch_size=50,
+    hidden_units=[10, 10]
+
+    Final RMSE (on training data):   65.64
+    Final RMSE (on validation data): 63.52
+
+  Adam
+    my_optimizer=tf.train.AdamOptimizer(learning_rate=0.01),
+    steps=1000,
+    batch_size=50,
+    hidden_units=[10, 10]
+
+    Final RMSE (on training data):   69.56
+    Final RMSE (on validation data): 67.36
+Task 3:
+  my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.5),
+  steps=4000,
+  batch_size=50,
+  hidden_units=[10, 10]
+
+  Final RMSE (on training data):   65.28
+  Final RMSE (on validation data): 64.08
