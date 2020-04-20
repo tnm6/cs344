@@ -8,4 +8,14 @@ degree of control than Keras since so much more of the configuration is set
 manually, but Keras' "higher level" code, which abstracts away much of the
 configuration, could save considerable time in setting up models.
 
-b.  
+b.  Tasks 1 & 2: Report your best hyper-parameter settings and their resulting
+    performance on the testing dataset.
+
+  learning_rate=0.00075,
+  steps=5000,
+  batch_size=100,
+  hidden_units=[10, 10]
+
+  Final RMSE (on training data):    101.00
+  Final RMSE (on validation data):  100.99
+  Final RMSE (on test data):        99.18
