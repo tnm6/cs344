@@ -11,3 +11,10 @@ digit.
 b.  Task 2: How does the TensorFlow network architecture differ from
     the Keras example given in class? Report any improvements you can make over
     the baseline testset accuracy for this task.
+  Compared to the Keras implementation of the MNIST problem, the TensorFlow
+implementation uses two hidden layers that are 100 nodes wide, whereas the
+Keras implementation used one hidden layer which was 512 nodes wide.
+
+  I was unable to improve over the baseline accuracy.
+
+c.  
