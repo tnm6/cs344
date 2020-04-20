@@ -17,4 +17,9 @@ Keras implementation used one hidden layer which was 512 nodes wide.
 
   I was unable to improve over the baseline accuracy.
 
-c.  
+c.  Task 3: What differences can you see between the visualizations for 10 steps
+    and 1000 steps?
+  At 10 steps, the generated images are highly pixelated and noisy, with little
+to no discernible patterns to show visible digits. At 1000 steps, the images are
+clearer; while still noisy, one can discern shapes and patterns that are in line
+with the shapes of actual digits.
