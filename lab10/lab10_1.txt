@@ -1,0 +1,11 @@
+Exercise 10.1 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Would you rather use TensorFlow or Keras to build your models?
+  Keras, from what I can tell. TensorFlow itself probably has some greater
+degree of control than Keras since so much more of the configuration is set
+manually, but Keras' "higher level" code, which abstracts away much of the
+configuration, could save considerable time in setting up models.
+
+b.  
