@@ -1,0 +1,34 @@
+Exercise 10.4 of Lab 8
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Exercise 1:
+  i.    What’s the size/shape of the cats/dogs datasets?
+    Both datasets are of size 1500 (1000 for training, 500 for validation), and
+  both are of shape (150, 150, 3) (three dimensions), accounting for height and
+  width in pixels, and RGB values for each pixel.
+  ii.   How does the first CNN compare with the one we did in class?
+    The class example had 3 layers of convolution and max pooling, as does this
+  example. The shape is three-dimensional, but (150, 150, 3) vs (28, 28, 1), to
+  account for both an increase in pixel density and the complexity of each pixel
+  (purely luminosity vs. RGB).
+    The convolutional filters also differ. For the class example, one layer of
+  32, 3x3 filters, and two layers of 64, 3x3 filters. This example uses one
+  layer of 16 filters, then 32, then 64, all 3x3. Both use max pooling layers of
+  2x2 windows.
+    For the "flattening" layers, our class example had a hidden layer of 64
+  densely connected nodes (relu), then an output layer of 10 densely connected
+  nodes (softmax). This example opts for a densely connected layer of 512 nodes
+  (also relu) and an output layer of 1 node (sigmoid). This change to sigmoid is
+  due to the fact that it is a binary classification problem as opposed to a
+  categorical one.
+  iii.  Can you see any interesting patterns in the intermediate
+        representations?
+    The representations seem to cluster by "channel." Certain patterns are in a
+  negative-esque style, others a stencil-like appearance, and others like a red,
+  green, or blue filter has been applied to the images (different luminosities).
+    As they progress down the layers, the clusters become smaller and smaller,
+  until, by the time they're processed by max pooling for the second time, the
+  abstractions appear relatively normalized. They also seem to have an effect of
+  increasing contrast initially, until they are literally flattened out in range
+  of color by the second max pooling layer.
