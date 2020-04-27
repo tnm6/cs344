@@ -9,4 +9,8 @@ sense to add the complexity and intensive data/performance requirements of a
 deep NN. However, where accuracy is of the utmost priority, a NN would be the
 ideal choice.
 
-b.  
+b.  Task 2: Does the NN model do better than the linear model?
+  Its accuracy is notably higher, 84% vs 78.34%, and the average loss is notably
+lower, 0.32 vs 0.45, for the test set, so yes, it performs better than the
+linear model.
+
