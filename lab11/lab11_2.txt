@@ -1,0 +1,10 @@
+Exercise 11.2 of Lab 11
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Task 1: What are the biases present in the given dataset?
+  The data is not evenly distributed between men and women (about 2/3rds men and
+1/3rd women), and the vast majority of the adults are white. Another apparent
+skew is that most of the examples are from those working in the private sector.
+Each of these could skew the results toward biased or inaccurate performance.
+
