@@ -7,4 +7,12 @@ a.  Task 1: What are the biases present in the given dataset?
 1/3rd women), and the vast majority of the adults are white. Another apparent
 skew is that most of the examples are from those working in the private sector.
 Each of these could skew the results toward biased or inaccurate performance.
+  Also, capital gains and losses both show and extreme skew towards 0, which 
 
+b.  Task 2: Assess the potential bias in some other feature besides education
+    level.
+  In comparing marital status of men and women, women outnumber men in the
+widowed category significantly (roughly 7: or 8:1), but the women listed as
+married is closer to 1:6 compared to men. This suggests that married women are
+being underrepresented, in addition to the disparity of the overall data between
+men and women.
