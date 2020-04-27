@@ -1,0 +1,9 @@
+Exercise 11.1 of Lab 11
+CS-344, Professor Vander Linden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+a.  Task 1: Is a linear model ever preferable to a deep NN model?
+  A linear model may require less data, and less time to train. Some problems
+might only need the relative simplicity of a linear model, so it would not make
+sense to add the complexity and intensive data/performance requirements of a
+deep NN.
