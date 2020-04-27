@@ -14,3 +14,7 @@ b.  Task 2: Does the NN model do better than the linear model?
 lower, 0.32 vs 0.45, for the test set, so yes, it performs better than the
 linear model.
 
+c.  Task 3: Do embeddings do much good for sentiment analysis tasks?
+  Not really in this case. Without embeddings, the deep NN had an accuracy of
+84% while, with an embedding layer added, had an accuracy of 78% on the test
+set. The average loss, AUC, etc. are also worse.
