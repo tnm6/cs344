@@ -16,3 +16,14 @@ widowed category significantly (roughly 7: or 8:1), but the women listed as
 married is closer to 1:6 compared to men. This suggests that married women are
 being underrepresented, in addition to the disparity of the overall data between
 men and women.
+
+d.  Task 4: Do you find disparities when you look at race rather than gender?
+    If so, which way do they skew?
+  Yes. For race, White had a slightly better distribution between true positives
+and true negatives, suggesting more of the examples categorized as White were in
+the income bracket of >$50K. For the other races, there was a significant skew
+towards the model guessing in the negative range. For Black, for example, the
+negatives far outweighed the positives (82 true positives vs 1192 true
+negatives), and of the positives, only 62% of them were guessed correctly.
+Similar skews are seen in the other Race categories.
+  This suggests that the income bracketing is biased towards the White examples.
