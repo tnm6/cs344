@@ -17,4 +17,29 @@ linear model.
 c.  Task 3: Do embeddings do much good for sentiment analysis tasks?
   Not really in this case. Without embeddings, the deep NN had an accuracy of
 84% while, with an embedding layer added, had an accuracy of 78% on the test
-set. The average loss, AUC, etc. are also worse.
+set. The average loss, AUC, etc. are also worse. Interestingly though, they are
+quite comparable to the linear model.
+
+d.  Tasks 4–5: Name two words that have similar embeddings and explain why that
+    makes sense.
+  'Hilarious' and 'comedy' have similar embeddings. This makes sense, since a
+film with associated with comedy (either by genre or with comedic elements)
+traits would, ideally, have hilarious elements (what a weirdly technical way to
+talk about it...). They are also two words in the larger group of similarly
+embedded words that are positive, such as 'entertaining.'
+
+e.  Task 6: Report your best hyper-parameters and their resulting performance.
+  The Colaboratory notebook had several bugs where the accuracy bottomed out at
+0.5, but after a few runs, these are the settings that seemed to work a little
+better (changed learning rate to 0.02):
+
+  my_optimizer = tf.train.AdagradOptimizer(learning_rate=0.2)
+  my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
+
+  classifier = tf.estimator.DNNClassifier(
+    feature_columns=feature_columns,
+    hidden_units=[10,10],
+    optimizer=my_optimizer
+  )
+
+  accuracy 0.84632
