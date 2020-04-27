@@ -6,4 +6,7 @@ a.  Task 1: Is a linear model ever preferable to a deep NN model?
   A linear model may require less data, and less time to train. Some problems
 might only need the relative simplicity of a linear model, so it would not make
 sense to add the complexity and intensive data/performance requirements of a
-deep NN.
+deep NN. However, where accuracy is of the utmost priority, a NN would be the
+ideal choice.
+
+b.  
