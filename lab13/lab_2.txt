@@ -1,0 +1,47 @@
+ Exercise 13.2 for CS-344, Professor Keith VanderLinden, Calvin University
+ Answers by Nathan Meyer (tnm6)
+
+Rules:
+  isOn(A,B)
+  isOn(B,C)
+  supports(Table,C)
+  ∀x∀y supports(x,y) => isOn(y,x)
+  ∀x∀y isOn(x,y) => isAbove(x,y)
+  ∀x∀y∀z isAbove(x,y) ^ isAbove(y,z) => isAbove(x,z)
+
+Goal to prove:
+  isAbove(A, Table)
+
+CNF conversions:
+  ¬supports(x,y) v isOn(y,x)
+  ¬isOn(x,y) v isAbove(x,y)
+  ¬isAbove(x,y) ^ ¬isAbove(y,z) v isAbove(x,z)
+
+Prove by contradition:
+  Assume:
+    ¬isAbove(A,Table)
+
+  Proof:
+    isOn(A,B) ^ isOn(B,C) ^ supports(Table,C) ^ ¬isAbove(A,Table)
+      supports(Table,C) ^ ¬supports(x,y) v isOn(y,x) -- x|Table, y|C
+      supports(Table,C) ^ ¬supports(Table,C) v isOn(Table,C) -- cancel disjuncts
+->  isOn(A,B) ^ isOn(B,C) ^ isOn(C,Table) ^ ¬isAbove(A,Table)
+      isOn(C,Table) ^ ¬isOn(x,y) v isAbove(x,y) -- x|C, y|Table
+      isOn(C,Table) ^ ¬isOn(C,Table) v isAbove(C,Table) -- cancel disjuncts
+->  isOn(A,B) ^ isOn(B,C) ^ isAbove(C,Table) ^ ¬isAbove(A,Table)
+      isOn(A,B) ^ ¬isOn(x,y) v isAbove(x,y) -- x|A, y|B
+      isOn(A,B) ^ ¬isOn(A,B) v isAbove(A,B) -- cancel disjuncts
+      isOn(B,C) ^ ¬isOn(x,y) v isAbove(x,y) -- x|B, y|C
+      isOn(B,C) ^ ¬isOn(B,C) v isAbove(B,C) -- cancel disjuncts
+->  isAbove(A,B) ^ isAbove(B,C) ^ isAbove(C,Table) ^ ¬isAbove(A, Table)
+      isAbove(A,B) ^ isAbove(B,C) ^
+        ¬isAbove(x,y) ^ ¬isAbove(y,z) v isAbove(x,z) -- x|A, y|B, z|C
+      isAbove(A,B) ^ isAbove(B,C) ^
+        ¬isAbove(A,B) ^ ¬isAbove(B,C) v isAbove(A,C) -- cancel disjuncts
+->  isAbove(A,C) ^ isAbove(C,Table) ^ ¬isAbove(A,Table)
+      isAbove(A,C) ^ isAbove(C,Table) ^
+        ¬isAbove(x,y) ^ ¬isAbove(y,z) v isAbove(x,z) -- x|A, y|C, z|Table
+      isAbove(A,C) ^ isAbove(C,Table) ^
+        ¬isAbove(A,C) ^ ¬isAbove(C,Table) v isAbove(A,Table) -- cancel disjuncts
+->  isAbove(A,Table) ^ ¬isAboveA,Table) -- Contradiction, so
+    isAbove(A,Table)
