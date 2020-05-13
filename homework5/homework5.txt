@@ -1,0 +1,38 @@
+Logic Exercises for Homework 5
+CS-344, Professor Keith VanderLinden, Calvin University
+Answers by Nathan Meyer (tnm6)
+
+1. Exercise 7.2 from AIMA
+
+Given:
+  mythical => immortal
+  ¬mythical => ¬immortal ^ mammal
+  immortal v mammal => horned
+  horned => magical
+
+Prove:
+  - mythical
+    Cannot be proven. There are no rules in which mythical is an outcome. It is
+  only the specifying condition for two of the rules. Since mythical is not
+  given in any other sentence, it cannot be proven with just these.
+    
+  - horned
+    Although we do not know whether the unicorn is mythical or not, we can know
+  from the rule for mythical and the rule for ¬mythical that the unicorn is
+  either immortal or a mortal mammal. In either the case of the unicorn being
+  immortal or a mammal, it is horned, so the unicorn must be horned.
+
+  - magical
+    The unicorn is therefore magical. Since it is proven to be horned, by the
+  horned => magical rule, the unicorn is also magical.
+
+Prolog?:
+    I would think that you could program this problem into Prolog. The implies
+  statement a => b is simply translated to the b:- a rule in Prolog. For the
+  conjunctions and the negations, it would not be a straightforward, 4-sentence
+  ruleset like it is in propositional logic. Where the left-hand side would have
+  conjunctions, some intermediate rules would have to be written. The negation
+  (/+) operator could also be used, though only on the right-hand side.
+
+
+2. 
