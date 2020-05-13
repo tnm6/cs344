@@ -35,4 +35,28 @@ Prolog?:
   (/+) operator could also be used, though only on the right-hand side.
 
 
-2. 
+2. Solution for LPN! Exercise 2.4:
+
+crossword(H1, H2, H3, V1, V2, V3) :-
+  word(H1,_,H1V1,_,H1V2,_,H1V3,_),
+  word(H2,_,H2V1,_,H2V2,_,H2V3,_),
+  word(H3,_,H3V1,_,H3V2,_,H3V3,_),
+  word(V1,_,H1V1,_,H2V1,_,H3V1,_),
+  word(V2,_,H1V2,_,H2V2,_,H3V2,_),
+  word(V3,_,H1V3,_,H2V3,_,H3V3,_),
+  H1 \= V1, H2 \= V2, H3 \= V3.
+
+Printed solutions when run on SWI-Prolog:
+  H1 = astante,
+  H2 = cobalto,
+  H3 = pistola,
+  V1 = astoria,
+  V2 = baratto,
+  V3 = statale ;
+  H1 = astoria,
+  H2 = baratto,
+  H3 = statale,
+  V1 = astante,
+  V2 = cobalto,
+  V3 = pistola ;
+  false.
