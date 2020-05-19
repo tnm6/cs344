@@ -9,9 +9,9 @@ cursor = data.cursor()
 
 cursor.execute("SELECT line_text FROM lines")
 
-# fetchall() always returns a tuple, so keep only first index of each tuple
-lines = np.array(cursor.fetchall())[:,0]
-print(lines[:10])
+# fetchall() always returns tuples, so keep only first index of each tuple
+lines = [i[0] for i in cursor.fetchall()]
+# print(lines[:10])
 
 tokenizer = Tokenizer(num_words=NUM_WORDS)
 tokenizer.fit_on_texts(lines)
@@ -24,4 +24,8 @@ for i in range(cursor.fetchone()[0]):
     cur_sequence = tokenizer.texts_to_sequences(cur_lines)
     lines_by_movie.append(cur_sequence)
 features = np.array(lines_by_movie)
-print(features[0])
+# print(features[0][:10])
+print(features.shape)
+
+np.random.shuffle(features)
+# train_features = 
