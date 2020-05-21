@@ -19,7 +19,9 @@ from sklearn.preprocessing import LabelEncoder
 class Cornell:
 
     def __init__(self):
-        self.genre_index = {}   # later filled by load_data()
+        self.genre_to_idx = {}
+        self.idx_to_genre = []
+        # later filled by load_data()
 
     def load_data(self, num_words=10000, path='movie_lines.db',
                   oov_token='?', seed=113, train_size=462):
@@ -72,7 +74,12 @@ class Cornell:
         # Encode each genre name into an integer and link them via dict
         genre_ints = encoder.fit_transform(genre_names)
         for i in range(len(genre_names)):
-            self.genre_index[genre_names[i]] = genre_ints[i]
+            self.genre_to_idx[genre_names[i]] = genre_ints[i]
+
+        # Create a conversion table for index back to genre name
+        self.idx_to_genre = [''] * len(genre_names)
+        for genre in genre_names:
+            self.idx_to_genre[self.genre_to_idx[genre]] = genre
 
         # Collect genres per movie
         movie_genres = []
@@ -92,7 +99,7 @@ class Cornell:
         for entry in movie_genres:
             genres_int = []
             for genre in entry:
-                genres_int.append(self.genre_index[genre])
+                genres_int.append(self.genre_to_idx[genre])
             movie_genres_int.append(genres_int)
 
         labels = np.array(movie_genres_int)
@@ -112,6 +119,9 @@ class Cornell:
 
         return (train_data, train_labels), (test_data, test_labels)
 
-    def get_genre_index(self):
+    def get_genre_to_idx(self):
         """Returns the dictionary mapping genres to genre indices"""
-        return self.genre_index
+        return self.genre_to_idx
+
+    def get_idx_to_genre(self):
+        return self.idx_to_genre
